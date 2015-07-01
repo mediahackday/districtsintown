@@ -2749,14 +2749,19 @@ background-color: #000;
 /****** Media queries options ******/
 
 @media only screen and (max-width: 760px) {
-  .area {
+    .area {
         width: 91.66667%;
-  }
+    }
+
+    .query input {
+          margin-left: 0px;
+          margin-top: 10px;
+    }
     
-  .query input {
-      margin-left: 0px;
-      margin-top: 10px;
-  }
+    .txtLrg, textarea.txtLrg
+    {
+        font-size: 1.3em;
+    }
 }
 
 @media only screen and (min-width: 640px) {	
