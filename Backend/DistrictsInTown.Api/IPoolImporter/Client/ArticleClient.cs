@@ -16,7 +16,6 @@ namespace IPoolImporter.Client
 
         public void GetNumArticlesForDistrict(string district)
         {
-        
             Dictionary<string, int> numResults = new Dictionary<string, int>();
             
             var response = GetResponseForDistrict(district, "");
@@ -90,6 +89,7 @@ namespace IPoolImporter.Client
         private class Document
         {
             public Entities entities { get; set; }
+            public string identifier { get; set; }
             public override string ToString()
             {
                 StringBuilder sb = new StringBuilder("Document ");
@@ -134,5 +134,32 @@ namespace IPoolImporter.Client
             public decimal weight { get; set; }
         }
 
+        public List<News> GetNewsForDistrict(string district)
+        {
+            var response = GetResponseForDistrict(district, "", 1000);
+            var result = new List<News>();
+            var scores = new Keywords();
+            foreach (var document in response.Data.documents)
+            {
+                News news = new News();
+                news.ID = document.identifier;
+                if (document.entities != null && document.entities.keywords != null)
+                    foreach (var keyword in document.entities.keywords)
+                    {
+                        int wordScore;
+                        if (!scores.Scores.TryGetValue(keyword.lemma, out wordScore))
+                        {
+                            wordScore = new Random().Next(20)-10;
+                        }
+                        decimal score = wordScore*keyword.weight;
+                        news.RawScore += score;
+                    }
+                if (news.RawScore != 0)
+                {
+                    result.Add(news);
+                }
+            }
+            return result;
+        }
     }
 }
