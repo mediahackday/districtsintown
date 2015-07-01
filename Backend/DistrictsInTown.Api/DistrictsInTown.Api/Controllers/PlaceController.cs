@@ -19,9 +19,9 @@ namespace DistrictsInTown.Api.Controllers
                 var repository = new PlaceRepository();
                 var data = new Data
                 {
-                    Places = repository.Get(value)
+                    Places = repository.Get(value),
+                    Max = 10
                 };
-                data.Max = data.Places.Count();
 
                 var json = JsonConvert.SerializeObject(data);
 
