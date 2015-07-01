@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FourSquareImporter", "FourS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IPoolImporter", "IPoolImporter\IPoolImporter.csproj", "{32239598-2E47-4A38-820D-81AFE12EA781}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NominatimImporter", "NominatimImporter\NominatimImporter.csproj", "{F4E6CB47-EC69-4A54-B1F2-D8BB0D93B07F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{32239598-2E47-4A38-820D-81AFE12EA781}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32239598-2E47-4A38-820D-81AFE12EA781}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32239598-2E47-4A38-820D-81AFE12EA781}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4E6CB47-EC69-4A54-B1F2-D8BB0D93B07F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4E6CB47-EC69-4A54-B1F2-D8BB0D93B07F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4E6CB47-EC69-4A54-B1F2-D8BB0D93B07F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4E6CB47-EC69-4A54-B1F2-D8BB0D93B07F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
