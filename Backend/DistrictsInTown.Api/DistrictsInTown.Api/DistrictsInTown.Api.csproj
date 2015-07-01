@@ -84,6 +84,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activities\CalculateScores.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\PlaceController.cs" />
     <Compile Include="Global.asax.cs">

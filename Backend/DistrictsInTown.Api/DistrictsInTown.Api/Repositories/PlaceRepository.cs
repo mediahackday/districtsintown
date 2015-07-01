@@ -22,7 +22,8 @@ namespace DistrictsInTown.Api.Repositories
             {
                 Latitude = place.Location.Latitude ?? 0D,
                 Longitude = place.Location.Longitude ?? 0D,
-                Score = place.Score
+                Score = place.Score,
+                ZipCode = place.Zip
             });
         }
     }
