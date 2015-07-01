@@ -57,6 +57,7 @@
     <Compile Include="OAuth\OAuthBase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Saver.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -66,7 +67,15 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Data\histogram.tsv.txt" />
+    <Content Include="Data\histogram.tsv.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DistrictsInTown.DbModel\DistrictsInTown.DbModel.csproj">
+      <Project>{d2f0a269-40a8-4d65-af0f-cbbe46aa92e3}</Project>
+      <Name>DistrictsInTown.DbModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
