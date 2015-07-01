@@ -18,11 +18,11 @@ namespace IPoolImporter.Client
             _apiSecret = apiSecret;
         }
 
-        public GetArticlesForDistrict(string district)
-        {
-            RestClient client = new RestClient(Program.BASEURL);
+        //public GetArticlesForDistrict(string district)
+        //{
+        //    RestClient client = new RestClient(Program.BASEURL);
 
 
-        }
+        //}
     }
 }
