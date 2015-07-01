@@ -124,20 +124,35 @@ angular.module('DistrictsInTown.map', ['ngRoute'])
 
 	var cfg = {
 		// radius should be small ONLY if scaleRadius is true (or small radius is intended)
-		"radius": 2,
-		"maxOpacity": .8, 
+		radius: 1.2,
+		blur: .95,
+		maxOpacity: .7,
 		// scales the radius based on map zoom
-		"scaleRadius": true, 
+		scaleRadius: true, 
 		// if set to false the heatmap uses the global maximum for colorization
 		// if activated: uses the data maximum within the current map boundaries 
 		//   (there will always be a red spot with useLocalExtremas true)
-		"useLocalExtrema": true,
+		useLocalExtrema: true,
 		// which field name in your data represents the latitude - default "lat"
 		latField: 'lat',
 		// which field name in your data represents the longitude - default "lng"
 		lngField: 'lng',
 		// which field name in your data represents the data value - default "value"
-		valueField: 'count'
+		valueField: 'count',
+		gradient: {
+			// enter n keys between 0 and 1 here
+			// for gradient color customization
+			'.1': '#3D83BA',
+			'.2': '#30A4CB',
+			'.3': '#25C6DC',
+			'.4': '#FAFC47',
+			'.5': '#E6FC46',
+			'.6': '#E6FC46',
+			'.7': '#D2FC45',
+			'.8': '#ADFD45',
+			'.9': '#69FD43',
+			'1': '#24FE41'
+		}
 	};
 
 
