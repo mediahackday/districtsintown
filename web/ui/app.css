@@ -1,38 +1,1918 @@
-/* app css stylesheet */
-
-.menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
+* {
+padding: 0;
+margin: 0;
+border: 0;
+outline: 0;
 }
 
-.menu:before {
-  content: "[";
-}
-
-.menu:after {
-  content: "]";
-}
-
-.menu > li {
-  display: inline;
-}
-
-.menu > li:before {
-  content: "|";
-  padding-right: 0.3em;
-}
-
-.menu > li:nth-child(1):before {
-  content: "";
-  padding: 0;
+/***** Webkit optional options *****/
+html {
+-webkit-text-size-adjust: 100%;
+-ms-text-size-adjust: 100%;
 }
 
 body {
-    padding: 0;
-    margin: 0;
+-webkit-tap-highlight-color: #000;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
 }
-html, body, #map {
-    height: 100%;
+
+.wbkRst button, button.wbkRst {
+-webkit-appearance: none;
+}
+
+/******* Define some elements ******/
+
+button {
+-webkit-appearance: button;
+}
+
+@font-face {
+	font-family: 'Pt Sans';
+	font-size: medium;
+	font-weight: normal;
+	src: url('../font/pt_sans.eot'); /* IE9 Compat Modes */
+	src: url('../font/pt_sans.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	     url('../font/pt_sans.woff') format('woff'), /* Modern Browsers */
+	     url('../font/pt_sans.ttf') format('truetype'), /* Safari, Android, iOS */
+	     url('../font/pt_sans.svg#pt_sans') format('svg'); /* Legacy iOS */
+}
+
+/**** Element floating options *****/
+
+.fltLft {
+float: left;
+}
+
+.fltRgt {
+float: right;
+}
+
+.clrBth {
+clear: both;
+}
+
+/***** Element display options *****/
+
+.dspNon, head, script, style, title, link, meta, hr {
+display: none;
+}
+
+.dspInl, button, pre, map {
+display: inline;
+}
+
+.dspBlk, html, article, footer, header, section, aside, details, figcaption, figure, legend, summary, hgroup, main, menu, div, dir, img, nav, ul, p {
+display: block;
+}
+
+.dspInlBlk, textarea, progress, keygen, audio, canvas, video, input, select, button {
+display: inline-block;
+}
+
+.dspFlx {
+display: -webkit-flex;
+display: -moz-flex;
+display: -ms-flex;
+display: flex;
+}
+
+.dspInlFlx {
+display: -webkit-inline-box;
+display: -moz-inline-box;
+display: -ms-inline-flexbox;
+display: inline-flex;
+}
+
+.dspTbl, table {
+display: table;
+}
+
+.dspInlTbl {
+display: inline-table;
+}
+
+.dspTblRow, tr {
+display: table-row;
+}
+
+.dspTblCll, td, th {
+display: table-cell;
+}
+
+.dspTblRowGrp, tbody {
+display: table-row-group;
+}
+
+/*** Element positioning options ***/
+
+.posRel {
+position: relative;
+}
+
+.posAbs {
+position: absolute;
+}
+
+.posFix {
+position: fixed;
+}
+
+/**** Absolute position options ****/
+
+.posTop, .posLftTop, .posRgtTop {
+top: 0;
+}
+
+.posRgt, .posRgtBtm, .posRgtTop {
+right: 0;
+}
+
+.posBtm, .posRgtBtm, .posLftBtm {
+bottom: 0;
+}
+
+.posLft, .posLftTop, .posLftBtm {
+left: 0;
+}
+
+.posLftOneTenths {
+left: 10%;
+}
+
+.posLftOneHalfTenths {
+left: 15%;
+}
+
+.posLftTwoTenths {
+left: 20%;
+}
+
+.posLftTwoHalfTenths {
+left: 25%;
+}
+
+.posLftThreeTenths {
+left: 30%;
+}
+
+.posLftThreeHalfTenths {
+left: 35%;
+}
+
+.posLftFourTenths {
+left: 40%;
+}
+
+.posLftFiveTenths {
+left: 50%;
+}
+
+.posLftSixTenths {
+left: 60%;
+}
+
+.posLftSevenTenths {
+left: 70%;
+}
+
+.posLftEightTenths {
+left: 80%;
+}
+
+.posLftNineTenths {
+left: 90%;
+}
+
+.posLftFull {
+left: 100%;
+}
+
+.posTopHalf {
+top: 50%;
+}
+
+/***** Text rendering options ******/
+
+.txtRdrSpd {
+text-rendering: optimizeSpeed;
+}
+
+.txtRdrOptLeg {
+text-rendering: optimizeLegibility;
+}
+
+.txtRdrGeoPrc {
+text-rendering: geometricPrecision;
+}
+
+.txtRdrAtm {
+text-rendering: auto;
+}
+
+/***** Vertical font position ******/
+
+.vertBsl, tbody, sub, sup, tr {
+vertical-align: baseline;
+}
+
+.vertSub {
+vertical-align: sub;
+}
+
+.vertSup {
+vertical-align: super;
+}
+
+.vertTop {
+vertical-align: top;
+}
+
+.vertMdl {
+vertical-align: middle;
+}
+
+.vertBtm {
+vertical-align: bottom;
+}
+
+.vertTxtTop {
+vertical-align: text-top;
+}
+
+.vertTxtBtm {
+vertical-align: text-bottom;
+}
+
+/**** Font direction options I *****/
+
+.txtDirLft {
+direction: ltr;
+}
+
+.txtDirRgt {
+direction: rtl;
+}
+
+/*** Bidirectional text options ****/
+
+.txtBdiNrm, output, bdo, bdi {
+unicode-bidi: normal;
+}
+
+.txtBdiPln {
+unicode-bidi: plaintext;
+}
+
+.txtBdiInc {
+unicode-bidi: embed;
+}
+
+.txtBdiOvr {
+unicode-bidi: bidi-override;
+}
+
+.txtBdiIso {
+unicode-bidi: -webkit-isolate;
+unicode-bidi: -moz-isolate;
+unicode-bidi: -ms-isolate;
+unicode-bidi: isolate;
+}
+
+.txtBdiIsoOvr {
+unicode-bidi: -webkit-isolate-override; 
+unicode-bidi: -moz-isolate-override;
+unicode-bidi: -ms-isolate-override; 
+unicode-bidi: isolate-override;
+}
+
+/**** Font direction options II ****/
+
+.txtBgn, textarea, caption, keygen, input, select, button, th, td, li {
+text-align: start;
+}
+
+.txtEnd {
+text-align: end;
+}
+
+.txtLft {
+text-align: left;
+}
+
+.txtRgt {
+text-align: right;
+}
+
+.txtCtr {
+text-align: center;
+}
+
+/**** Paragraph indent options *****/
+
+.txtLtrPos, textarea, keygen, select, button, input, ruby, rt {
+text-indent: 0;
+}
+
+/***** Font transform options ******/
+
+.txtFxNon, textarea, keygen, select, button, input {
+text-transform: none;
+}
+
+.txtFxLwr {
+text-transform: lowercase;
+}
+
+.txtFxUpr {
+text-transform: uppercase;
+}
+
+.txtFxCpt {
+text-transform: capitalize;
+}
+
+/*********** Primary font **********/
+
+.txtFntCpy, textarea, keygen, select, input {
+font-family: inherit;
+}
+
+.txtPrm, button, code, samp, kbd, pre, tt {
+font-family: 'Pt Sans', Helvetica;
+}
+
+/******** Font size options ********/
+
+.txtSzFul, body, sub, sup, h1, h2, h3, h4, h5, h6 {
+font-size: 100%;
+}
+
+.txtSzCpy, button {
+font-size: inherit;
+}
+
+.txtXXTiny, textarea.txtXXTiny {
+font-size: .2em;
+}
+
+.txtXTiny, textarea.txtXTiny {
+font-size: .4em;
+}
+
+.txtTiny, textarea.txtTiny {
+font-size: .6em;
+}
+
+.txtXXSml, textarea.txtXXSml {
+font-size: .8em;
+}
+
+.txtXSml, textarea.txtXSml {
+font-size: 1em;
+}
+
+.txtSml, textarea.txtSml {
+font-size: 1.2em;
+}
+
+.txtMed, textarea.txtMed {
+font-size: 1.4em;
+}
+
+.txtLrg, textarea.txtLrg {
+font-size: 1.6em;
+}
+
+.txtXLrg, textarea.txtXLrg {
+font-size: 1.8em;
+}
+
+.txtXXLrg, textarea.txtXXLrg {
+font-size: 2em;
+}
+
+.txtTall, textarea.txtTall {
+font-size: 2.5em;
+}
+
+.txtXTall, textarea.txtXTall {
+font-size: 3em;
+}
+
+.txtXXTall, textarea.txtXXTall {
+font-size: 3.5em;
+}
+
+/******* Font style options ********/
+
+.txtStlNml, address, cite, var, dfn, kbd, em, i {
+font-style: normal;
+}
+
+.txtStlItl {
+font-style: italic;
+}
+
+.txtStlObl {
+font-style: oblique;
+}
+
+/******* Font weight options *******/
+
+.txtWgtNml, optgroup, strong, button, code, th, h1, h2, h3, h4, h5, h6, b {
+font-weight: normal;
+}
+
+.txtWgtBld {
+font-weight: bold;
+}
+
+.txtWgtBldr {
+font-weight: bolder;
+}
+
+.txtWgtLgtr {
+font-weight: lighter;
+}
+
+/****** Letter spacing options ******/
+
+.txtSpcNrm, input, textarea, keygen, select, button {
+letter-spacing: normal;
+}
+
+.txtSpcXXSml {
+letter-spacing: .05em;
+}
+
+.txtSpcXSml {
+letter-spacing: .1em;
+}
+
+.txtSpcSml {
+letter-spacing: .15em;
+}
+
+.txtSpcMed {
+letter-spacing: .2em;
+}
+
+.txtSpcLrg {
+letter-spacing: .25em;
+}
+
+/****** Word spacing options *******/
+
+.txtSpcNml, textarea, keygen, select, button, input {
+word-spacing: normal;
+}
+
+/******** Word break options *******/
+
+.txtWrpNml {
+word-wrap: normal;
+}
+
+.txtWrpWrd {
+word-wrap: break-word;
+}
+
+/******* Line break options ********/
+
+.txtSpcNrm, select, pre {
+white-space: normal;
+}
+
+.txtSpcPre, textarea, input {
+white-space: pre;
+}
+
+.txtSpcNoWrp {
+white-space: nowrap;
+}
+
+.txtSpcPreWrp {
+white-space: pre-wrap;
+}
+
+.txtSpcPreLn {
+white-space: pre-line;
+}
+
+/******* Line height options *******/
+
+.txtLnNrm, textarea, keygen, select, button, input {
+line-height: normal;
+}
+
+.txtLnXXSml {
+line-height: .8em;
+}
+
+.txtLnXSml {
+line-height: 1em;
+}
+
+.txtLnSml {
+line-height: 1.2em;
+}
+
+.txtLnMed {
+line-height: 1.4em;
+}
+
+.txtLnLrg {
+line-height: 1.6em;
+}
+
+.txtLnXLrg {
+line-height: 1.8em;
+}
+
+.txtLnXXLrg {
+line-height: 2em;
+}
+
+.txtLnTall {
+line-height: 2.5em;
+}
+
+.txtLnXTall {
+line-height: 3em;
+}
+
+.txtLnXXTall {
+line-height: 3.5em;
+}
+
+/******* Font colour options *******/
+
+.txtColCpy, textarea, keygen, select, button, input {
+color: inherit;
+}
+
+.txtWht a, a.txtWht, .txtWht, 
+input[type=submit].txtWht, input[type=button].txtWht,
+.txtHvrWht a:hover, .txtHvrWht a:focus, 
+a:hover.txtHvrWht, a:focus.txtHvrWht, 
+input[type=submit]:hover.txtHvrWht, 
+input[type=submit]:focus.txtHvrWht, 
+input[type=button]:hover.txtHvrWht, 
+input[type=button]:focus.txtHvrWht {
+color: #fff;
+}
+
+.txtLgtGry a, a.txtLgtGry, .txtLgtGry, 
+input[type=submit].txtLgtGry, input[type=button].txtLgtGry,
+.txtHvrLgtGry a:hover, .txtHvrLgtGry a:focus, 
+a:hover.txtHvrLgtGry, a:focus.txtHvrLgtGry, 
+input[type=submit]:hover.txtHvrLgtGry, 
+input[type=submit]:focus.txtHvrLgtGry, 
+input[type=button]:hover.txtHvrLgtGry, 
+input[type=button]:focus.txtHvrLgtGry {
+color: #333;
+}
+
+.txtDrkGry a, a.txtDrkGry, .txtDrkGry, 
+input[type=submit].txtDrkGry, input[type=button].txtDrkGry,
+.txtHvrDrkGry a:hover, .txtHvrDrkGry a:focus, 
+a:hover.txtHvrDrkGry, a:focus.txtHvrDrkGry, 
+input[type=submit]:hover.txtHvrDrkGry, 
+input[type=submit]:focus.txtHvrDrkGry, 
+input[type=button]:hover.txtHvrDrkGry, 
+input[type=button]:focus.txtHvrDrkGry {
+color: #222;
+}
+
+.txtCrl a, a.txtCrl, .txtCrl, 
+input[type=submit].txtCrl, input[type=button].txtCrl,
+.txtHvrCrl a:hover, .txtHvrCrl a:focus, 
+a:hover.txtHvrCrl, a:focus.txtHvrCrl, 
+input[type=submit]:hover.txtHvrCrl, 
+input[type=submit]:focus.txtHvrCrl,
+input[type=button]:hover.txtHvrCrl, 
+input[type=button]:focus.txtHvrCrl {
+color: #ff7256;
+}
+
+.txtRed a, a.txtRed, .txtRed, 
+input[type=submit].txtRed, input[type=button].txtRed,
+.txtHvrRed a:hover, .txtHvrRed a:focus, 
+a:hover.txtHvrRed, a:focus.txtHvrRed, 
+input[type=submit]:hover.txtHvrRed, 
+input[type=submit]:focus.txtHvrRed,
+input[type=button]:hover.txtHvrRed, 
+input[type=button]:focus.txtHvrRed {
+color: #ff0000;
+}
+
+.txtBlk a, a.txtBlk, .txtBlk, 
+input[type=submit].txtBlk, input[type=button].txtBlk,
+.txtHvrBlk a:hover, .txtHvrBlk a:focus, 
+a:hover.txtHvrBlk, a:focus.txtHvrBlk, 
+input[type=submit]:hover.txtHvrBlk, 
+input[type=submit]:focus.txtHvrBlk, 
+input[type=button]:hover.txtHvrBlk, 
+input[type=button]:focus.txtHvrBlk {
+color: #000;
+}
+
+/******* Text shadow options *******/
+
+.txtSdwNon, textarea, keygen, select, button, input {
+text-shadow: none;
+}
+
+.txtSdwBlk {
+text-shadow: .06em .06em .06em #000;
+}
+
+.txtSdwWht {
+text-shadow: .06em .06em .06em #fff;
+}
+
+/***** Link decoration options *****/
+
+.txtDecNon, a.txtDecNon, .txtDecNon a, strike, del, ins, s, u, a {
+text-decoration: none;
+}
+
+.txtDecUdl, a.txtDecUdl, .txtDecUdl a {
+text-decoration: underline;
+}
+
+.txtDecOvl, a.txtDecOvl, .txtDecOvl a {
+text-decoration: overline;
+}
+
+.txtDecThl, a.txtDecThl, .txtDecThl a {
+text-decoration: line-through;
+}
+
+/********** Height options *********/
+
+.boxHgtNon, hr {
+height: 0;
+}
+
+.boxHgtMed {
+height: 1.2em;
+}
+
+.boxHgtLrg {
+height: 1.6em;
+}
+
+.boxHgtXLrg {
+height: 1.8em;
+}
+
+.boxHgtXXLrg {
+height: 2em;
+}
+
+.boxHgtTall {
+height: 3em;
+}
+
+.boxHgtXXTall {
+height: 25em;
+}
+
+.boxHgtFull, html, body {
+height: 100%;
+}
+
+.boxHgtAtm {
+height: auto !important;
+}
+
+/******** Min height options *******/
+
+.boxMinHgtMed {
+min-height: 1.2em;
+}
+
+.boxMinHgtLrg {
+min-height: 1.6em;
+}
+
+.boxMinHgtXLrg {
+min-height: 1.8em;
+}
+
+.boxMinHgtXXLrg {
+min-height: 2em;
+}
+
+.boxMinHgtTall {
+min-height: 10em;
+}
+
+.boxMinHgtXXTall {
+min-height: 25em;
+}
+
+/******* Box width options *********/
+
+.boxMaxWidFll, img {
+max-width: 100% !important;
+}
+
+.boxWidAtm {
+width: auto !important;
+}
+
+.boxWidFull, table {
+width: 100%;
+}
+
+.boxWidOneTenths {
+width: 10%;
+}
+
+.boxWidOneHalfTenths {
+width: 15%;
+}
+
+.boxWidTwoTenths {
+width: 20%;
+}
+
+.boxWidTwoHalfTenths {
+width: 25%;
+}
+
+.boxWidThreeTenths {
+width: 30%;
+}
+
+.boxWidThreeHalfTenths {
+width: 35%;
+}
+
+.boxWidFourTenths {
+width: 40%;
+}
+
+.boxWidFiveTenths {
+width: 50%;
+}
+
+.boxWidSixTenths {
+width: 60%;
+}
+
+.boxWidSevenTenths {
+width: 70%;
+}
+
+.boxWidEightTenths {
+width: 80%;
+}
+
+.boxWidNineTenths {
+width: 90%;
+}
+
+/******* Display box centre *******/
+
+.boxCtr {
+margin: 0 auto;
+}
+
+/******* Box model options ********/
+
+.boxSizCont, button, hr {
+-webkit-box-sizing: content-box;
+-moz-box-sizing: content-box;
+-ms-box-sizing: content-box;
+box-sizing: content-box;
+}
+
+.boxSizPad {
+-webkit-box-sizing: padding-box;
+-moz-box-sizing: padding-box;
+-ms-box-sizing: padding-box;
+box-sizing: padding-box;
+}
+
+.boxSizBdr {
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+-ms-box-sizing: border-box;
+box-sizing: border-box;
+}
+
+/****** Table border options ******/
+
+.bdrCol, table {
+border-collapse: collapse;
+}
+
+.bdrSep {
+border-collapse: separate;
+}
+
+/**** Border all width options *****/
+
+.bdrNon, legend, img {
+border-width: 0;
+}
+
+.bdrThn {
+border-width: thin;
+}
+
+.bdrMed {
+border-width: medium;
+}
+
+.bdrThk {
+border-width: thick;
+}
+
+/**** Border top width options *****/
+
+.bdrTopNon {
+border-top-width: 0;
+}
+
+.bdrTopThn {
+border-top-width: thin;
+}
+
+.bdrTopMed {
+border-top-width: medium;
+}
+
+.bdrTopThk {
+border-top-width: thick;
+}
+
+/*** Border right width options ****/
+
+.bdrRgtNon {
+border-right-width: 0;
+}
+
+.bdrRgtThn {
+border-right-width: thin;
+}
+
+.bdrRgtMed {
+border-right-width: medium;
+}
+
+.bdrRgtThk {
+border-right-width: thick;
+}
+
+/*** Border bottom width options ***/
+
+.bdrBtmNon {
+border-bottom-width: 0;
+}
+
+.bdrBtmThn {
+border-bottom-width: thin;
+}
+
+.bdrBtmMed {
+border-bottom-width: medium;
+}
+
+.bdrBtmThk {
+border-bottom-width: thick;
+}
+
+/**** Border left width options ****/
+
+.bdrLftNon {
+border-left-width: 0;
+}
+
+.bdrLftThn {
+border-left-width: thin;
+}
+
+.bdrLftMed {
+border-left-width: medium;
+}
+
+.bdrLftThk {
+border-left-width: thick;
+}
+
+/**** Border all style options *****/
+
+.bdrSld {
+border-style: solid;
+}
+
+.bdrDsh {
+border-style: dashed;
+}
+
+.bdrDot {
+border-style: dotted;
+}
+
+.bdrDbl {
+border-style: double;
+}
+
+/**** Border top style options *****/
+
+.bdrTopSld {
+border-top-style: solid;
+}
+
+.bdrTopDsh {
+border-top-style: dashed;
+}
+
+.bdrTopDot {
+border-top-style: dotted;
+}
+
+.bdrTopDbl {
+border-top-style: double;
+}
+
+/*** Border right style options ****/
+
+.bdrRgtSld {
+border-right-style: solid;
+}
+
+.bdrRgtDsh {
+border-right-style: dashed;
+}
+
+.bdrRgtDot {
+border-right-style: dotted;
+}
+
+.bdrRgtDbl {
+border-right-style: double;
+}
+
+/*** Border bottom style options ***/
+
+.bdrBtmSld {
+border-bottom-style: solid;
+}
+
+.bdrBtmDsh {
+border-bottom-style: dashed;
+}
+
+.bdrBtmDot {
+border-bottom-style: dotted;
+}
+
+.bdrBtmDbl {
+border-bottom-style: double;
+}
+
+/**** Border left style options ****/
+
+.bdrLftSld {
+border-left-style: solid;
+}
+
+.bdrLftDsh {
+border-left-style: dashed;
+}
+.bdrLftDot {
+border-left-style: dotted;
+}
+
+.bdrLftDbl {
+border-left-style: double;
+}
+
+/****** Border colour options ******/
+
+.bdrColCpy, tbody, tr {
+border-color: inherit;
+}
+
+.bdrColTrns {
+border-color: transparent;
+}
+
+.bdrColWht {
+border-color: #fff;
+}
+
+.bdrColRed {
+border-color: #ff0000;
+}
+
+.bdrColBlk {
+border-color: #000;
+}
+
+/****** Layer helper classes ******/
+
+.layer-base {
+	z-index: 1;
+}
+
+.layer-base-50 {
+	z-index: 50;
+}
+
+.layer-base-100 {
+	z-index: 100;
+}
+
+.layer-base-150 {
+	z-index: 150;
+}
+
+.layer-base-200 {
+	z-index: 200;
+}
+
+/****** Border radius options ******/
+
+.bdrRadNon, keygen, select {
+-webkit-border-radius: 0;
+-moz-border-radius: 0;
+border-radius: 0;
+}
+
+.bdrRadXXXSml {
+-webkit-border-radius: 2px;
+-moz-border-radius: 2px;
+border-radius: 2px;
+}
+
+.bdrRadXXSml {
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+}
+
+.bdrRadTopLftXXSml {
+-webkit-border-top-left-radius: 5px;
+-moz-border-radius-topleft: 5px;
+border-top-left-radius: 5px;
+}
+
+.bdrRadTopRgtXXSml {
+-webkit-border-top-right-radius: 5px;
+-moz-border-radius-topright: 5px;
+border-top-right-radius: 5px;
+}
+
+.bdrRadBtmRgtXXSml {
+-webkit-border-bottom-right-radius: 5px;
+-moz-border-radius-bottomright: 5px;
+border-bottom-right-radius: 5px;
+}
+
+.bdrRadBtmLftXXSml {
+-webkit-border-bottom-left-radius: 5px;
+-moz-border-radius-bottomleft: 5px;
+border-bottom-left-radius: 5px;
+}
+
+/******* Margin all options ********/
+
+.marXXTiny {
+margin: .2em;
+}
+
+.marXTiny {
+margin: .4em;
+}
+
+.marTiny {
+margin: .6em;
+}
+
+.marXXSml {
+margin: .8em;
+}
+
+.marXSml {
+margin: 1em;
+}
+
+.marSml {
+margin: 1.2em;
+}
+
+.marMed {
+margin: 1.4em;
+}
+
+.marLrg {
+margin: 1.6em;
+}
+
+.marXLrg {
+margin: 1.8em;
+}
+
+.marXXLrg {
+margin: 2em;
+}
+
+.marTall {
+margin: 2.5em;
+}
+
+.marXTall {
+margin: 3em;
+}
+
+.marXXTall {
+margin: 3.5em;
+}
+
+/******* Margin top options ********/
+
+.marTopXXTiny {
+margin-top: .2em;
+}
+
+.marTopXTiny {
+margin-top: .4em;
+}
+
+.marTopTiny {
+margin-top: .6em;
+}
+
+.marTopXXSml {
+margin-top: .8em;
+}
+
+.marTopXSml {
+margin-top: 1em;
+}
+
+.marTopSml {
+margin-top: 1.2em;
+}
+
+.marTopMed {
+margin-top: 1.4em;
+}
+
+.marTopLrg {
+margin-top: 1.6em;
+}
+
+.marTopXLrg {
+margin-top: 1.8em;
+}
+
+.marTopXXLrg {
+margin-top: 2em;
+}
+
+.marTopTall {
+margin-top: 2.5em;
+}
+
+.marTopXTall {
+margin-top: 3em;
+}
+
+.marTopXXTall {
+margin-top: 3.5em;
+}
+
+.marTopHalfNegative {
+margin-top: -50%;
+}
+
+/****** Margin right options *******/
+
+.marRgtXXTiny {
+margin-right: .2em;
+}
+
+.marRgtXTiny {
+margin-right: .4em;
+}
+
+.marRgtTiny, .marRgtBtmTny {
+margin-right: .6em;
+}
+
+.marRgtXXSml {
+margin-right: .8em;
+}
+
+.marRgtXSml {
+margin-right: 1em;
+}
+
+.marRgtSml {
+margin-right: 1.2em;
+}
+
+.marRgtMed {
+margin-right: 1.4em;
+}
+
+.marRgtLrg, .marRgtLftLrg {
+margin-right: 1.6em;
+}
+
+.marRgtXLrg {
+margin-right: 1.8em;
+}
+
+.marRgtXXLrg {
+margin-right: 2em;
+}
+
+.marRgtTall {
+margin-right: 2.5em;
+}
+
+.marRgtXTall {
+margin-right: 3em;
+}
+
+.marRgtXXTall {
+margin-right: 3.5em;
+}
+
+/****** Margin bottom options ******/
+
+.marBtmXXTiny {
+margin-bottom: .2em;
+}
+
+.marBtmXTiny {
+margin-bottom: .4em;
+}
+
+.marBtmTiny, .marRgtBtmTny {
+margin-bottom: .6em;
+}
+
+.marBtmXXSml {
+margin-bottom: .8em;
+}
+
+.marBtmXSml {
+margin-bottom: 1em;
+}
+
+.marBtmSml {
+margin-bottom: 1.2em;
+}
+
+.marBtmMed {
+margin-bottom: 1.4em;
+}
+
+.marBtmLrg {
+margin-bottom: 1.6em;
+}
+
+.marBtmXLrg {
+margin-bottom: 1.8em;
+}
+
+.marBtmXXLrg {
+margin-bottom: 2em;
+}
+
+.marBtmTall {
+margin-bottom: 2.5em;
+}
+
+.marBtmXTall {
+margin-bottom: 3em;
+}
+
+.marBtmXXTall {
+margin-bottom: 3.5em;
+}
+
+/******* Margin left options *******/
+
+.marLftXXTiny {
+margin-left: .2em;
+}
+
+.marLftXTiny {
+margin-left: .4em;
+}
+
+.marLftTiny {
+margin-left: .6em;
+}
+
+.marLftXXSml {
+margin-left: .8em;
+}
+
+.marLftXSml {
+margin-left: 1em;
+}
+
+.marLftSml {
+margin-left: 1.2em;
+}
+
+.marLftMed {
+margin-left: 1.4em;
+}
+
+.marLftLrg, .marRgtLftLrg {
+margin-left: 1.6em;
+}
+
+.marLftXLrg {
+margin-left: 1.8em;
+}
+
+.marLftXXLrg {
+margin-left: 2em;
+}
+
+.marLftTall {
+margin-left: 2.5em;
+}
+
+.marLftXTall {
+margin-left: 3em;
+}
+
+.marLftXXTall {
+margin-left: 3.5em;
+}
+
+/******* Padding all options *******/
+
+.padXXTiny {
+padding: .2em;
+}
+
+.padXTiny {
+padding: .4em;
+}
+
+.padTiny {
+padding: .6em;
+}
+
+.padXXSml {
+padding: .8em;
+}
+
+.padXSml {
+padding: 1em;
+}
+
+.padSml {
+padding: 1.2em;
+}
+
+.padMed {
+padding: 1.4em;
+}
+
+.padLrg {
+padding: 1.6em;
+}
+
+.padXLrg {
+padding: 1.8em;
+}
+
+.padXXLrg {
+padding: 2em;
+}
+
+.padTall {
+padding: 2.5em;
+}
+
+.padXTall {
+padding: 3em;
+}
+
+.padXXTall {
+padding: 3.5em;
+}
+
+/******* Padding top options *******/
+
+.padTopXXTiny {
+padding-top: .2em;
+}
+
+.padTopXTiny {
+padding-top: .4em;
+}
+
+.padTopTiny {
+padding-top: .6em;
+}
+
+.padTopXXSml {
+padding-top: .8em;
+}
+
+.padTopXSml {
+padding-top: 1em;
+}
+
+.padTopSml {
+padding-top: 1.2em;
+}
+
+.padTopMed {
+padding-top: 1.4em;
+}
+
+.padTopLrg {
+padding-top: 1.6em;
+}
+
+.padTopXLrg {
+padding-top: 1.8em;
+}
+
+.padTopXXLrg {
+padding-top: 2em;
+}
+
+.padTopTall {
+padding-top: 2.5em;
+}
+
+.padTopXTall {
+padding-top: 3em;
+}
+
+.padTopXXTall {
+padding-top: 3.5em;
+}
+
+/****** Padding right options ******/
+
+.padRgtXXTiny {
+padding-right: .2em;
+}
+
+.padRgtXTiny {
+padding-right: .4em;
+}
+
+.padRgtTiny {
+padding-right: .6em;
+}
+
+.padRgtXXSml {
+padding-right: .8em;
+}
+
+.padRgtXSml {
+padding-right: 1em;
+}
+
+.padRgtSml {
+padding-right: 1.2em;
+}
+
+.padRgtMed {
+padding-right: 1.4em;
+}
+
+.padRgtLrg {
+padding-right: 1.6em;
+}
+
+.padRgtXLrg {
+padding-right: 1.8em;
+}
+
+.padRgtXXLrg {
+padding-right: 2em;
+}
+
+.padRgtTall {
+padding-right: 2.5em;
+}
+
+.padRgtXTall {
+padding-right: 3em;
+}
+
+.padRgtXXTall {
+padding-right: 3.5em;
+}
+
+/***** Padding bottom options ******/
+
+.padBtmXXTiny {
+padding-bottom: .2em;
+}
+
+.padBtmXTiny {
+padding-bottom: .4em;
+}
+
+.padBtmTiny {
+padding-bottom: .6em;
+}
+
+.padBtmXXSml {
+padding-bottom: .8em;
+}
+
+.padBtmXSml {
+padding-bottom: 1em;
+}
+
+.padBtmSml {
+padding-bottom: 1.2em;
+}
+
+.padBtmMed {
+padding-bottom: 1.4em;
+}
+
+.padBtmLrg {
+padding-bottom: 1.6em;
+}
+
+.padBtmXLrg {
+padding-bottom: 1.8em;
+}
+
+.padBtmXXLrg {
+padding-bottom: 2em;
+}
+
+.padBtmTall {
+padding-bottom: 2.5em;
+}
+
+.padBtmXTall {
+padding-bottom: 3em;
+}
+
+.padBtmXXTall {
+padding-bottom: 3.5em;
+}
+
+/****** Padding left options *******/
+
+.padLftXXTiny {
+padding-left: .2em;
+}
+
+.padLftXTiny {
+padding-left: .4em;
+}
+
+.padLftTiny {
+padding-left: .6em;
+}
+
+.padLftXXSml {
+padding-left: .8em;
+}
+
+.padLftXSml {
+padding-left: 1em;
+}
+
+.padLftSml {
+padding-left: 1.2em;
+}
+
+.padLftMed {
+padding-left: 1.4em;
+}
+
+.padLftLrg {
+padding-left: 1.6em;
+}
+
+.padLftXLrg {
+padding-left: 1.8em;
+}
+
+.padLftXXLrg {
+padding-left: 2em;
+}
+
+.padLftTall {
+padding-left: 2.5em;
+}
+
+.padLftXTall {
+padding-left: 3em;
+}
+
+.padLftXXTall {
+padding-left: 3.5em;
+}
+
+/***** List style item options *****/
+
+.lstStlNon, menu, dir, ol, ul {
+list-style-type: none;
+}
+
+.lstStlCrc {
+list-style-type: circle;
+}
+
+.lstStlSqr {
+list-style-type: square;
+}
+
+.lstStlDsc {
+list-style-type: disc;
+}
+
+.lstStlDec {
+list-style-type: decimal;
+}
+
+.lstStlLdgZro {
+list-style-type: decimal-leading-zero;
+}
+
+.lstStlLwrRmn {
+list-style-type: lower-roman;
+}
+
+.lstStlUprRmn {
+list-style-type: upper-roman;
+}
+
+.lstStlLwrLtn {
+list-style-type: lower-latin;
+}
+
+.lstStlUprLtn {
+list-style-type: upper-latin;
+}
+
+.lstStlLwrGrk {
+list-style-type: lower-greek;
+}
+
+/***** Textarea resize options *****/
+
+.resizeNon {
+resize: none;
+}
+
+.resizeBoth {
+resize: both;
+}
+
+.resizeHorz {
+resize: horizontal;
+}
+
+.resizeVert {
+resize: vertical;
+}
+
+/******* Animation options *********/
+
+.easeSlw {
+-webkit-transition: all 2s ease;
+-moz-transition: all 2s ease;
+-o-transition: all 2s ease;
+transition: all 2s ease;
+}
+
+.rotateHalf {
+-webkit-transform: rotate(180deg);
+-moz-transform: rotate(180deg);
+-ms-transform: rotate(180deg);
+transform: rotate(180deg);
+}
+
+/******** User mark options ********/
+
+.usrMrkTxt, textarea, input {
+-webkit-user-select: text;
+-moz-user-select: text;
+-ms-user-select: text;
+user-select: text;
+}
+
+.usrMrkAll {
+-webkit-user-select: all;
+-moz-user-select: all;
+-ms-user-select: all;
+user-select: all;
+}
+
+.usrMrkNon {
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+
+/********* Cursor options **********/
+
+.crsNon {
+cursor: none;
+}
+
+.crsDft, label, select {
+cursor: default;
+}
+
+.crsHlp {
+cursor: help;
+}
+
+.crsMve {
+cursor: move;
+}
+
+.crsTxt, input {
+cursor: text;
+}
+
+.crsWat {
+cursor: wait;
+}
+
+.crsPnt {
+cursor: pointer;
+}
+
+.crsPgs {
+cursor: progress;
+}
+
+.crsXhr {
+cursor: crosshair;
+}
+
+.crsFbn {
+cursor: not-allowed;
+}
+
+/**** Element overflow options *****/
+
+.ovrHdn, svg:not(:root) {
+overflow: hidden !important;
+}
+
+/****** Form element options *******/
+
+input:required, textarea:required, select:required {
+background-color: #dee9f7;
+}
+
+input::-moz-submit-invalid, textarea::-moz-submit-invalid, select::-moz-submit-invalid {
+box-shadow: none;
+background-color: #fff;
+}
+
+input::-moz-ui-invalid, textarea::-moz-ui-invalid, select::-moz-ui-invalid {
+box-shadow: none;
+background-color: #fff;
+}
+
+input:invalid, textarea:invalid, select:invalid {
+box-shadow: none;
+background-color: #fff;
+}
+
+input:valid, textarea:valid, select:valid {
+background-color: #ddffdd;
+}
+
+input:optional, textarea:optional, select:optional {
+background-color: #fff;
+}
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder, .txtDisabled {
+color: #333;
+}
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+color: #333;
+}
+
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+color: #333;
+}
+
+input:-moz-placeholder, textarea:-moz-placeholder {
+color: #333;
+}
+
+/**** Background colour options ****/
+
+.bgTrns, button, mark, a {
+background-color: transparent;
+}
+
+.bgLgtTrns {
+background-color: rgba(0, 0, 0, .1);
+}
+
+.bgWht {
+background-color: #fff;
+}
+
+.bgLgtGry {
+background-color: #ebebeb;
+}
+
+.bgDrkGry {
+background-color: #444;
+}
+
+.bgRed {
+background-color: #ff0000;
+}
+
+.bgLgtBlu {
+background-color: #007bdb;
+}
+
+.bgBlu {
+background-color: #005ea8;
+}
+
+.bgBlk {
+background-color: #000;
+}
+
+
+/****** Device queries options ******/
+
+/* For HTC Butterfly, Sony Xperia S */
+@media only screen and (-webkit-min-device-pixel-ratio: 3), (min-resolution: 240dpi) {
+
+}
+
+/* For iPhone 4, iPhone 4S, iPhone 5, iPad (3rd generation), iPad 4,
+ All Macs with Retina displays, Google Galaxy Nexus, Google Nexus 4, Google Nexus 10,
+ Samsung Galaxy S III, Samsung Galaxy Note II, Sony Xperia S, HTC One X */
+@media only screen and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+
+}
+
+/* For Google Nexus S, Samsung Galaxy S II, HTC Desire, HTC Desire HD,
+ HTC Incredible S, HTC Velocity, HTC Sensation */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+
+}
+
+/* For Google Nexus 7, BlackBerry Torch */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), (min-resolution: 120dpi) {
+
+}
+
+/* For All non-Retina Macs, All non-Retina iOS devices, Acer Iconia A500
+ Samsung Galaxy Tab 10.1, Samsung Galaxy S */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.0), (min-resolution: 96dpi) {
+
+}
+
+/****** Media queries options ******/
+
+@media only screen and (min-width: 480px) {
+
+}
+
+@media only screen and (min-width: 640px) {	
+
+}
+
+@media only screen and (min-width: 760px) {
+
+}
+
+@media only screen and (min-width: 1024px) {
+
+}
+
+
+/****** leafleft custom ******/
+
+.leaflet-top .leaflet-control {
+	margin-top: 56px;
 }
