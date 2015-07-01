@@ -11,6 +11,7 @@
     "angular-loader": "~1.4.0",
     "angular-mocks": "~1.4.0",
     "html5-boilerplate": "~5.2.0",
-    "heatmap": "git@github.com:pa7/heatmap.js.git#develop"
+    "heatmap": "git@github.com:pa7/heatmap.js.git#develop",
+    "angular-ui-router": "*"
   }
 }
