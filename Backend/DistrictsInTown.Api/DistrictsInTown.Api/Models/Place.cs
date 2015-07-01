@@ -2,7 +2,7 @@
 
 namespace DistrictsInTown.Api.Models
 {
-    public class Location
+    public class Place
     {
         [JsonProperty("lng")]
         public double Longitude { get; set; }
@@ -11,6 +11,6 @@ namespace DistrictsInTown.Api.Models
         public double Latitude { get; set; }
 
         [JsonProperty("count")]
-        public int Score { get; set; }
+        public double Score { get; set; }
     }
 }
