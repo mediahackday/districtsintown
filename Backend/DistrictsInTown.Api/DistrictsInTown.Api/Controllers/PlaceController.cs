@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using DistrictsInTown.Api.Activities;
 using DistrictsInTown.Api.Models;
 using DistrictsInTown.Api.Repositories;
 using Newtonsoft.Json;
@@ -17,11 +17,15 @@ namespace DistrictsInTown.Api.Controllers
             try
             {
                 var repository = new PlaceRepository();
+                var calculateScores = new CalculateScores();
+
+                var calculatedPlaces = calculateScores.For(repository.Get(value));
+
                 var data = new Data
                 {
-                    Places = repository.Get(value)
+                    Places = calculatedPlaces,
+                    Max = 10
                 };
-                data.Max = data.Places.Count();
 
                 var json = JsonConvert.SerializeObject(data);
 
