@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -13,20 +14,27 @@ namespace DistrictsInTown.Api.Controllers
         // GET: api/Location/value
         public HttpResponseMessage Get(string value)
         {
-            var repository = new PlaceRepository();
-            var data = new Data
+            try
             {
-                Places = repository.Get(value)
-            };
-            data.Max = data.Places.Count();
+                var repository = new PlaceRepository();
+                var data = new Data
+                {
+                    Places = repository.Get(value),
+                    Max = 10
+                };
 
-            var json = JsonConvert.SerializeObject(data);
+                var json = JsonConvert.SerializeObject(data);
 
-            return new HttpResponseMessage
+                return new HttpResponseMessage
+                {
+                    Content = new StringContent(json),
+                    StatusCode = HttpStatusCode.OK
+                };
+            }
+            catch (Exception)
             {
-                Content = new StringContent(json),
-                StatusCode = HttpStatusCode.OK
-            };
+                return new HttpResponseMessage {StatusCode = HttpStatusCode.InternalServerError};
+            }
         }
     }
 }
