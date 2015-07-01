@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using DistrictsInTown.Api.Models;
 
@@ -18,9 +19,9 @@ namespace DistrictsInTown.Api.Activities
 
                 yield return new Place
                 {
-                    Score = filteredByZipCode.Average(s => s.Score),
-                    Latitude = filteredByZipCode.Average(l => l.Latitude),
-                    Longitude = filteredByZipCode.Average(l => l.Longitude),
+                    Score = Math.Round(filteredByZipCode.Average(s => s.Score), 2),
+                    Latitude = Math.Round(filteredByZipCode.Average(l => l.Latitude), 6),
+                    Longitude = Math.Round(filteredByZipCode.Average(l => l.Longitude), 6),
                     ZipCode = code
                 };
             }
