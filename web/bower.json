@@ -12,6 +12,12 @@
     "angular-mocks": "~1.4.0",
     "html5-boilerplate": "~5.2.0",
     "heatmap": "git@github.com:pa7/heatmap.js.git#develop",
-    "angular-ui-router": "*"
+    "angular-ui-router": "*",
+    "leaflet.heat":  "git@github.com:Leaflet/Leaflet.heat.git#gh-pages",
+    "leaflet": "*",
+    "leaflet.d3": "git@github.com:teralytics/Leaflet.D3SvgOverlay.git#master",
+    "d3": "*",
+    "webgl-heatmap-leaflet":"git@github.com:ursudio/webgl-heatmap-leaflet.git#master"
+
   }
 }
