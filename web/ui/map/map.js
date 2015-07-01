@@ -5,9 +5,9 @@ var app = angular.module('DistrictsInTown');
 app.controller('mapCtrl', function($scope, DistrictServ) {
 	var heatmap = null;
 
-  $scope.updateHeatMap = function(event) {
-    if (event.charCode === 32 || event.charCode === 0) {
-      DistrictServ.getLocationData($scope.keywords).then(function (d) {
+	$scope.updateHeatMap = function(event) {
+		if (event.charCode === 32 || event.charCode === 0) {
+			DistrictServ.getLocationData($scope.keywords).then(function (d) {
 				if (map.hasLayer(heatmap)) {
 					map.removeLayer(heatmap);
 				}
