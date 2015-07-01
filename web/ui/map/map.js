@@ -3,24 +3,28 @@
 var app = angular.module('DistrictsInTown');
 
 app.controller('mapCtrl', function($scope, DistrictServ) {
+	var heatmap = null;
+
 	$scope.updateHeatMap = function(event) {
 		if (event.charCode === 32 || event.charCode === 0) {
-			DistrictServ.getFakeLocationData($scope.keywords).then(function (d) {
-				if (d.data) {
-					var heatmap = new L.TileLayer.WebGLHeatMap({size: 1000, autoresize: true});
-					// dataPoints is an array of arrays: [[lat, lng, intensity]...]
-					var dataPoints = [[52.5247, 13.38885, 37]];
-					for (var i = 0, len = dataPoints.length; i < len; i++) {
-						var point = dataPoints[i];
-						heatmap.addDataPoint(point[0],point[1],point[2]);
-					}
-						map.addLayer(heatmap);
+			DistrictServ.getLocationData($scope.keywords).then(function (d) {
+				if (map.hasLayer(heatmap)) {
+					map.removeLayer(heatmap);
 				}
-			});
-		}
-	};
-
-	var map = L.map('map').setView([52.5247, 13.38885], 10);
+        if(d.data.data) {
+					  heatmap = new L.TileLayer.WebGLHeatMap({size: 2000, autoresize: true, alphaRange: 0.99});
+						for (var i = 0, len = d.data.data.length; i < len; i++) {
+    					var point = d.data.data[i];
+							var lat = point.lat;
+							var lng = point.lng;
+							var count = Math.ceil(point.count);
+    					heatmap.addDataPoint(lat,lng,count*6);
+						}
+						map.addLayer(heatmap);
+        }});
+    }
+  };
+	var map = L.map('map').setView([52.5247, 13.38885], 12);
 
 	var tiles = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
 		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
