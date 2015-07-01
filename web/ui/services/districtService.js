@@ -16,8 +16,12 @@ app.factory('DistrictServ', function($http) {
 
             getLocationData: function (keywords) {
                 keywords = keywords.split(" ");
+                var url = 'http://districtsintown.azurewebsites.net/api/place?';
+                for (var i = 0; i < keywords.length; i++) {
+                  url = url + 'keyword=' + keywords[i] + '&';
+                }
                 var res =  $http({
-                    url: 'api.de/location?keywords='+keywords.toString(),
+                    url: url,
                     method: "GET"
                  });
 
