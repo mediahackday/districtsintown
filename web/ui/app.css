@@ -2709,6 +2709,12 @@ background-color: #000;
 }
 
 
+.logo {
+    height: 1.3em;
+    width: 1.3em;
+    display:inline;
+}
+
 /****** Device queries options ******/
 
 /* For HTC Butterfly, Sony Xperia S */
@@ -2742,7 +2748,7 @@ background-color: #000;
 
 /****** Media queries options ******/
 
-@media only screen and (min-width: 480px) and (max-width: 760px) {
+@media only screen and (max-width: 760px) {
   .area {
         width: 91.66667%;
   }
