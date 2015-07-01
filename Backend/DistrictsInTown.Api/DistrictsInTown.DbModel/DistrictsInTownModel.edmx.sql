@@ -33,7 +33,8 @@ CREATE TABLE [dbo].[Places] (
     [Location] geography  NOT NULL,
     [Score] float  NOT NULL,
     [Keyword] nvarchar(max)  NOT NULL,
-    [Source] nvarchar(max)  NOT NULL
+    [Source] nvarchar(max)  NOT NULL,
+	[Zip] nvarchar(10)  NOT NULL
 );
 GO
 
