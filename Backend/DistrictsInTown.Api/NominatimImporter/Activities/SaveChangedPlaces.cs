@@ -7,6 +7,10 @@ namespace NominatimImporter.Activities
 {
     internal class SaveChangedPlaces
     {
+        /// <summary>
+        ///     Saves <see cref="Place" /> items with new zip codes.
+        /// </summary>
+        /// <param name="places">The <see cref="Place" /> items that should be saved.</param>
         public void This(IEnumerable<Place> places)
         {
             using (var container = new DistrictsInTownModelContainer())

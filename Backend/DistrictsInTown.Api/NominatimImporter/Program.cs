@@ -1,7 +1,4 @@
-﻿using System.Globalization;
-using System.Linq;
-using System.Net.Http;
-using Newtonsoft.Json;
+﻿using System.Linq;
 using NominatimImporter.Activities;
 
 namespace NominatimImporter
@@ -14,7 +11,7 @@ namespace NominatimImporter
             var updatePlaces = new UpdatePlaces();
             var saveChangedPlaces = new SaveChangedPlaces();
 
-            var places = retrievePlaces.Narrowed().ToList();
+            var places = retrievePlaces.Narrowed("ipool_").ToList();
             updatePlaces.With(places);
             saveChangedPlaces.This(places);
         }

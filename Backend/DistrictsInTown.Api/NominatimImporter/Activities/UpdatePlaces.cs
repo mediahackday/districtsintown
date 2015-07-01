@@ -10,6 +10,10 @@ namespace NominatimImporter.Activities
     {
         private const string QueryUrl = "http://nominatim.openstreetmap.org/reverse?format=json&lat={0}&lon={1}";
 
+        /// <summary>
+        ///     Updates a list of <see cref="Place" /> items with a zip code.
+        /// </summary>
+        /// <param name="places">The places that should be updated.</param>
         public void With(IEnumerable<Place> places)
         {
             foreach (var place in places)
