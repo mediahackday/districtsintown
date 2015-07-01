@@ -3,12 +3,16 @@
 var app = angular.module('DistrictsInTown');
 
 app.controller('mapCtrl', function($scope, DistrictServ) {
+	var heatmap = null;
 
   $scope.updateHeatMap = function(event) {
     if (event.charCode === 32 || event.charCode === 0) {
       DistrictServ.getLocationData($scope.keywords).then(function (d) {
-        if(d.data) {
-						var heatmap = new L.TileLayer.WebGLHeatMap({size: 1000, autoresize: true});
+				if (map.hasLayer(heatmap)) {
+					map.removeLayer(heatmap);
+				}
+        if(d.data.data) {
+					  heatmap = new L.TileLayer.WebGLHeatMap({size: 1000, autoresize: true});
 						for (var i = 0, len = d.data.data.length; i < len; i++) {
     					var point = d.data.data[i];
     					heatmap.addDataPoint(point.lat,point.lng,point.count*8);
