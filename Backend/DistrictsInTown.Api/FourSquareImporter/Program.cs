@@ -1,6 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using DistrictsInTown.DbModel;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Spatial;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -13,7 +15,7 @@ namespace FourSquareImporter
     {
         static void Main(string[] args)
         {
-            ImportVenus();
+            ImportVenus("coffee", "Café");
         }
 
         private static void WriteVenues(IList<ForesquareVenue> venues)
@@ -27,22 +29,52 @@ namespace FourSquareImporter
             Console.WriteLine("{0}  {1},{2} {3} {4}", venue.Name, venue.Longitude, venue.Latitude, venue.ZipCode, venue.Score);
         }
 
-        private static void ImportVenus()
+        private static void ImportVenus(string section, string keyword)
         {
-            int chunkSize = 50;
-            int offset = 0;
-
-            ForesquareVenueResult result;
-            do
+            using (var dbContext = new DistrictsInTownModelContainer())
             {
-                result = ExploreVenues(offset, chunkSize, "Berlin, DE", "coffee", "Café").Result;
-                offset += chunkSize;
+                int chunkSize = 50;
+                int offset = 0;
 
-                WriteVenues(result.Venues);
+                ForesquareVenueResult result;
+                do
+                {
+                    result = ExploreVenues(offset, chunkSize, "Berlin, DE", section, keyword).Result;
+                    offset += chunkSize;
 
-                Console.WriteLine("Total results: {0}", result.TotalResults);
+                    WriteVenues(result.Venues);
+
+                    foreach (var venue in result.Venues)
+                        AddVenueToDatabase(dbContext, venue);
+
+                    try
+                    {
+                        dbContext.SaveChanges();
+                    }
+                    catch (Exception error)
+                    {
+
+                    }
+
+                    Console.WriteLine("Total results: {0}", result.TotalResults);
+                }
+                while (offset < result.TotalResults);
             }
-            while (offset < result.TotalResults);
+        }
+
+        private static void AddVenueToDatabase(DistrictsInTownModelContainer dbContext, ForesquareVenue venue)
+        {
+            if (String.IsNullOrEmpty(venue.ZipCode))
+                return;
+
+            dbContext.Places.Add(new Places
+            {
+                Location = DbGeography.FromText(String.Format("POINT ({0} {1})", venue.Longitude, venue.Latitude)),
+                Keyword = venue.Keyword,
+                Score = venue.Score,
+                Source = venue.Source,
+                Zip = venue.ZipCode
+            });
         }
 
         private static string CLIENT_ID = "AZQX4TS2BF0SKW5HEFVJANL5C2AMXFBKC3JPBMDZ1NBMLNX5";
@@ -93,17 +125,14 @@ namespace FourSquareImporter
                 if (group.name != "recommended")
                     continue;
 
-                // use everything over score 7
-
                 foreach (var groupItem in group.items)
                 {
                     var venue = groupItem.venue;
 
                     try
                     {
-
-                        if (!IsInCategory(venue.categories, category))
-                            continue;
+                        /*if (!IsInCategory(venue.categories, category))
+                            continue;*/
 
                         if (venue.rating < 7.0)
                             continue;
