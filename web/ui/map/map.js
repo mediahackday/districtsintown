@@ -5,7 +5,8 @@ var app = angular.module('DistrictsInTown');
 app.controller('mapCtrl', function($scope, DistrictServ) {
 	var baseLayer = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
 		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-		maxZoom: 18,
+		maxZoom: 11,
+    minZoom: 11,
 		id: 'webtobesocial.jokblmno',
 		accessToken: 'pk.eyJ1Ijoid2VidG9iZXNvY2lhbCIsImEiOiJaU3NfOVdRIn0.k0Zr0K8bPDstktQYhXY-ZA'
 	});
@@ -21,11 +22,11 @@ app.controller('mapCtrl', function($scope, DistrictServ) {
 
 	var cfg = {
 		// radius should be small ONLY if scaleRadius is true (or small radius is intended)
-		radius: 1.2,
+		radius: 25,
 		blur: .95,
 		maxOpacity: .7,
 		// scales the radius based on map zoom
-		scaleRadius: true,
+		scaleRadius: false,
 		// if set to false the heatmap uses the global maximum for colorization
 		// if activated: uses the data maximum within the current map boundaries
 		//   (there will always be a red spot with useLocalExtremas true)
@@ -57,7 +58,7 @@ app.controller('mapCtrl', function($scope, DistrictServ) {
 
 	var map = new L.Map('map', {
 		center: new L.LatLng(52.5247, 13.38885),
-		zoom: 10,
+		zoom: 11,
 		layers: [baseLayer, heatmapLayer]
 	});
 
