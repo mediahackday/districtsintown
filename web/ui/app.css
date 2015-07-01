@@ -188,6 +188,47 @@ left: 90%;
 left: 100%;
 }
 
+
+.posTopOneTenths {
+top: 10%;
+}
+
+.posTopTwoTenths {
+top: 20%;
+}
+
+.posTopThreeTenths {
+top: 30%;
+}
+
+.posTopFourTenths {
+top: 40%;
+}
+
+.posTopFiveTenths {
+top: 50%;
+}
+
+.posTopSixTenths {
+top: 60%;
+}
+
+.posTopSevenTenths {
+top: 70%;
+}
+
+.posTopEightTenths {
+top: 80%;
+}
+
+.posTopNineTenths {
+top: 90%;
+}
+
+.posTopFull {
+top: 100%;
+}
+
 .posTopHalf {
 top: 50%;
 }
@@ -1829,7 +1870,7 @@ background-color: transparent;
 }
 
 .bgLgtTrns {
-background-color: rgba(0, 0, 0, .1);
+background-color: rgba(0, 0, 0, .2);
 }
 
 .bgWht {
