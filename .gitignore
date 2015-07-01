@@ -14,3 +14,8 @@ hs_err_pid*
 .DS_Store
 npm-debug.log
 web/ngrok
+*.suo
+*.user
+/Backend/DistrictsInTown.Api/DistrictsInTown.Api/bin
+/Backend/DistrictsInTown.Api/DistrictsInTown.Api/obj
+/Backend/DistrictsInTown.Api/packages
