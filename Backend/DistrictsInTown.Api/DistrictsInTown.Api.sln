@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IPoolImporter", "IPoolImpor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DistrictsInTown.DbModel", "DistrictsInTown.DbModel\DistrictsInTown.DbModel.csproj", "{D2F0A269-40A8-4D65-AF0F-CBBE46AA92E3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FourSquareImporter", "FourSquareImporter\FourSquareImporter.csproj", "{58440E84-680A-47E6-A751-7CE2B7418750}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{D2F0A269-40A8-4D65-AF0F-CBBE46AA92E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2F0A269-40A8-4D65-AF0F-CBBE46AA92E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2F0A269-40A8-4D65-AF0F-CBBE46AA92E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58440E84-680A-47E6-A751-7CE2B7418750}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58440E84-680A-47E6-A751-7CE2B7418750}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58440E84-680A-47E6-A751-7CE2B7418750}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58440E84-680A-47E6-A751-7CE2B7418750}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
