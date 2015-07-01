@@ -2655,19 +2655,19 @@ background-color: #fff;
 }
 
 input::-webkit-input-placeholder, textarea::-webkit-input-placeholder, .txtDisabled {
-color: #333;
+color: #afafaf;
 }
 
 input::-moz-placeholder, textarea::-moz-placeholder {
-color: #333;
+color: #afafaf;
 }
 
 input:-ms-input-placeholder, textarea:-ms-input-placeholder {
-color: #333;
+color: #afafaf;
 }
 
 input:-moz-placeholder, textarea:-moz-placeholder {
-color: #333;
+color: #afafaf;
 }
 
 /**** Background colour options ****/
@@ -2677,7 +2677,7 @@ background-color: transparent;
 }
 
 .bgLgtTrns {
-background-color: rgba(0, 0, 0, .2);
+background-color: rgba(30, 144, 255, .3);
 }
 
 .bgWht {
