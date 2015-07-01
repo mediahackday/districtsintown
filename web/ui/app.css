@@ -623,7 +623,7 @@ input[type=submit]:hover.txtHvrDrkGry,
 input[type=submit]:focus.txtHvrDrkGry, 
 input[type=button]:hover.txtHvrDrkGry, 
 input[type=button]:focus.txtHvrDrkGry {
-color: #222;
+color: #444;
 }
 
 .txtCrl a, a.txtCrl, .txtCrl, 
