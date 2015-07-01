@@ -2742,8 +2742,15 @@ background-color: #000;
 
 /****** Media queries options ******/
 
-@media only screen and (min-width: 480px) {
-
+@media only screen and (min-width: 480px) and (max-width: 760px) {
+  .area {
+        width: 91.66667%;
+  }
+    
+  .query input {
+      margin-left: 0px;
+      margin-top: 10px;
+  }
 }
 
 @media only screen and (min-width: 640px) {	
