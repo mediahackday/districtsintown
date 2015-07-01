@@ -12,7 +12,7 @@ namespace DistrictsInTown.Api.Controllers
 {
     public class PlaceController : ApiController
     {
-        // GET: api/Location/value
+        // GET: api/Place?keyword=park&keyword=coffee...
         public HttpResponseMessage Get([FromUri] IList<string> keyword)
         {
             try
