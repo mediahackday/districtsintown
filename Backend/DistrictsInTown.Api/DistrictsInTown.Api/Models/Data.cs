@@ -10,6 +10,6 @@ namespace DistrictsInTown.Api.Models
 
         // TODO: max 40k items
         [JsonProperty("data")]
-        public IEnumerable<Location> Locations { get; set; }
+        public IEnumerable<Place> Places { get; set; }
     }
 }

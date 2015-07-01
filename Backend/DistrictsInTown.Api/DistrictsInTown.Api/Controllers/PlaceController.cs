@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using DistrictsInTown.Api.Models;
@@ -7,17 +8,17 @@ using Newtonsoft.Json;
 
 namespace DistrictsInTown.Api.Controllers
 {
-    public class LocationController : ApiController
+    public class PlaceController : ApiController
     {
         // GET: api/Location/value
         public HttpResponseMessage Get(string value)
         {
-            var repository = new LocationRepository();
+            var repository = new PlaceRepository();
             var data = new Data
             {
-                Locations = repository.Get(value),
-                Max = 10
+                Places = repository.Get(value)
             };
+            data.Max = data.Places.Count();
 
             var json = JsonConvert.SerializeObject(data);
 

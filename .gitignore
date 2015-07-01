@@ -20,3 +20,8 @@ bin
 *.suo
 *.csproj.user
 
+*.user
+/Backend/DistrictsInTown.Api/DistrictsInTown.Api/bin
+/Backend/DistrictsInTown.Api/DistrictsInTown.Api/obj
+/Backend/DistrictsInTown.Api/packages
+Debug
