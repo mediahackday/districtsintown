@@ -1016,6 +1016,28 @@ border-color: #ff0000;
 border-color: #000;
 }
 
+/****** Layer helper classes ******/
+
+.layer-base {
+	z-index: 1;
+}
+
+.layer-base-50 {
+	z-index: 50;
+}
+
+.layer-base-100 {
+	z-index: 100;
+}
+
+.layer-base-150 {
+	z-index: 150;
+}
+
+.layer-base-200 {
+	z-index: 200;
+}
+
 /****** Border radius options ******/
 
 .bdrRadNon, keygen, select {
@@ -1819,7 +1841,7 @@ background-color: #ebebeb;
 }
 
 .bgDrkGry {
-background-color: #333;
+background-color: #444;
 }
 
 .bgRed {
@@ -1886,4 +1908,11 @@ background-color: #000;
 
 @media only screen and (min-width: 1024px) {
 
+}
+
+
+/****** leafleft custom ******/
+
+.leaflet-top .leaflet-control {
+	margin-top: 56px;
 }
