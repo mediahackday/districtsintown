@@ -14,9 +14,10 @@ app.factory('DistrictServ', function($http) {
                 return res;
             },
 
-            getLocationData: function () {
+            getLocationData: function (keywords) {
+                keywords = keywords.split(" ");
                 var res =  $http({
-                    url: 'api.de/location',
+                    url: 'api.de/location?keywords='+keywords.toString(),
                     method: "GET"
                  });
 

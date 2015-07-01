@@ -11,8 +11,8 @@ app.controller('mapCtrl', function($scope, DistrictServ) {
 	});
 
   $scope.updateHeatMap = function(event) {
-    if (event.charCode === 32) {
-      DistrictServ.getFakeLocationData().then(function (d) {
+    if (event.charCode === 32 || event.charCode === 0) {
+      DistrictServ.getFakeLocationData($scope.keywords).then(function (d) {
         if(d.data) {
             heatmapLayer.setData(d.data);
         }});
