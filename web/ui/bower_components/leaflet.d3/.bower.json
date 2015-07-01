@@ -1,0 +1,13 @@
+{
+  "name": "leaflet.d3",
+  "homepage": "https://github.com/teralytics/Leaflet.D3SvgOverlay",
+  "_release": "4edb6a241b",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "4edb6a241b53620bff83c983e5b13d775dd5ca06"
+  },
+  "_source": "git@github.com:teralytics/Leaflet.D3SvgOverlay.git",
+  "_target": "master",
+  "_originalSource": "git@github.com:teralytics/Leaflet.D3SvgOverlay.git"
+}
