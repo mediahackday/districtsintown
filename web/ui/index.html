@@ -15,22 +15,19 @@
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
   <script src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
-
-<style>
+  <style>
 	#map {
 		height: 800px;
 	}
-</style>
+  </style>
 </head>
 <body>
-
   <div ng-view></div>
-
-  <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
-  -->
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/heatmap.js.bower/src/heatmap.js"></script>
+  <script src="bower_components/heatmap/build/heatmap.js"></script>
+  <script src="bower_components/heatmap/plugins/leaflet-heatmap.js"></script>
   <script src="app.js"></script>
   <script src="map/map.js"></script>
   <script src="components/version/version.js"></script>
