@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -12,14 +13,14 @@ namespace DistrictsInTown.Api.Controllers
     public class PlaceController : ApiController
     {
         // GET: api/Location/value
-        public HttpResponseMessage Get(string value)
+        public HttpResponseMessage Get([FromUri] IList<string> keyword)
         {
             try
             {
                 var repository = new PlaceRepository();
                 var calculateScores = new CalculateScores();
 
-                var calculatedPlaces = calculateScores.For(repository.Get(value));
+                var calculatedPlaces = calculateScores.For(repository.Get(keyword));
 
                 var data = new Data
                 {

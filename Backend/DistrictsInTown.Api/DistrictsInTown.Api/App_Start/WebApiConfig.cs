@@ -14,9 +14,15 @@ namespace DistrictsInTown.Api
             config.Routes.MapHttpRoute
                 (
                     "DefaultApi",
-                    "api/{controller}/{value}",
-                    new {value = RouteParameter.Optional}
+                    "api/{controller}"
                 );
+
+            //config.Routes.MapHttpRoute
+            //    (
+            //        "DefaultApi",
+            //        "api/{controller}/{value}",
+            //        new {value = RouteParameter.Optional}
+            //    );
         }
     }
 }

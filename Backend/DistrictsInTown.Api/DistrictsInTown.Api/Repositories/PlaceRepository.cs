@@ -7,13 +7,16 @@ namespace DistrictsInTown.Api.Repositories
 {
     public class PlaceRepository
     {
-        public IEnumerable<Place> Get(string keyword)
+        public IEnumerable<Place> Get(IList<string> keyword)
         {
+            if (!keyword.Any())
+            {
+                return Enumerable.Empty<Place>();
+            }
+
             var container = new DistrictsInTownModelContainer();
 
-            return string.IsNullOrWhiteSpace(keyword)
-                ? ToPlaceList(container.Places.ToList())
-                : ToPlaceList(container.Places.Where(p => p.Keyword == keyword)).ToList();
+            return ToPlaceList(container.Places.Where(p => keyword.Contains(p.Keyword)));
         }
 
         private static IEnumerable<Place> ToPlaceList(IEnumerable<Places> places)
