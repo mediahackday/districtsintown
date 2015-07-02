@@ -17,40 +17,57 @@ namespace IPoolImporter
 
         internal static readonly Dictionary<string, string> Bezirke = new Dictionary<string, string>()
         {
-            { "Mitte", "POINT (52.516666666667 13.366666666667)" },
-		    { "friedrichshain", "POINT (52.5 13.402222222222)" },
-		    { "Friedrichshain-Kreuzberg", "POINT (52.5 13.402222222222)" },
-		    { "kreuzberg", "POINT (52.5 13.402222222222)" },
-		    { "Pankow", "POINT (52.568888888889 13.402222222222)" },
-		    { "charlottenburg", "POINT (52.498888888889 13.285)" },
-		    { "OTS_Charlottenburg-Wilmersdorf", "POINT (52.498888888889 13.285)" },
-		    { "Charlottenburg-Wilmersdorf", "POINT (52.498888888889 13.285)" },
-		    { "Spandau", "POINT (52.533333333333 13.166666666667)" },
-		    { "spandau", "POINT (52.533333333333 13.166666666667)" },
-		    { "steglitz", "POINT (52.433333333333 13.25)" },
-		    { "zehlendorf", "POINT (52.433333333333 13.25)" },
-		    { "Steglitz-Zehlendorf", "POINT (52.433333333333 13.25)" },
-		    { "tempelhof", "POINT (52.466666666667 13.383333333333)" },
-		    { "Tempelhof-SchÃ¶neberg", "POINT (52.466666666667 13.383333333333)" },
-		    { "Tempelhof-Schöneberg", "POINT (52.466666666667 13.383333333333)" },
-		    { "NeukÃ¶lln", "POINT (52.483333333333 13.45)" },
-		    { "neukolln", "POINT (52.483333333333 13.45)" },
-		    { "treptow", "POINT (52.45 13.566666666667)" },
-		    { "Treptow-Köpenick", "POINT (52.45 13.566666666667)" },
-		    { "OTS_Treptow-KÃ¶penick", "POINT (52.45 13.566666666667)" },
-		    { "penick", "POINT (52.45 13.566666666667)" },
-		    { "köpenick", "POINT (52.45 13.566666666667)" },
-		    { "kopenick", "POINT (52.45 13.566666666667)" },
-		    { "Treptow-KÃ¶penick", "POINT (52.45 13.566666666667)" },
-		    { "marzahn", "POINT (52.539722222222 13.584166666667)" },
-		    { "Marzahn-Hellersdorf", "POINT (52.539722222222 13.584166666667)" },
-		    { "hellersdorf", "POINT (52.539722222222 13.584166666667)" },
-		    { "Lichtenberg", "POINT (52.533333333333 13.5)" },
-		    { "lichtenberg", "POINT (52.533333333333 13.5)" },
-		    { "Reinickendorf", "POINT (52.566666666667 13.35)" },
- 		    { "reinickendorf", "POINT (52.566666666667 13.35)" },
-       }; 
-        
+            { "Mitte", "POINT (13.366666666667 52.516666666667)" },
+		    { "friedrichshain", "POINT (13.402222222222 52.5)" },
+		    { "Friedrichshain-Kreuzberg", "POINT (13.402222222222 52.5)" },
+		    { "kreuzberg", "POINT (13.402222222222 52.5)" },
+		    { "Pankow", "POINT (13.402222222222 52.568888888889)" },
+		    { "charlottenburg", "POINT ( 13.285 52.498888888889)" },
+		    { "OTS_Charlottenburg-Wilmersdorf", "POINT ( 13.285 52.498888888889)" },
+		    { "Charlottenburg-Wilmersdorf", "POINT ( 13.285 52.498888888889)" },
+		    { "Spandau", "POINT (13.166666666667 52.533333333333)" },
+		    { "spandau", "POINT (13.166666666667 52.533333333333)" },
+		    { "steglitz", "POINT (13.25 52.433333333333)" },
+		    { "zehlendorf", "POINT (13.25 52.433333333333)" },
+		    { "Steglitz-Zehlendorf", "POINT (13.25 52.433333333333)" },
+		    { "tempelhof", "POINT ( 13.383333333333 52.466666666667)" },
+		    { "Tempelhof-SchÃ¶neberg", "POINT ( 13.383333333333 52.466666666667)" },
+		    { "Tempelhof-Schöneberg", "POINT ( 13.383333333333 52.466666666667)" },
+		    { "NeukÃ¶lln", "POINT ( 13.45 52.483333333333)" },
+		    { "neukolln", "POINT ( 13.45 52.483333333333)" },
+		    { "treptow", "POINT ( 13.566666666667 52.45)" },
+		    { "Treptow-Köpenick", "POINT ( 13.566666666667 52.45)" },
+		    { "OTS_Treptow-KÃ¶penick", "POINT ( 13.566666666667 52.45)" },
+		    { "penick", "POINT ( 13.566666666667 52.45)" },
+		    { "köpenick", "POINT ( 13.566666666667 52.45)" },
+		    { "kopenick", "POINT ( 13.566666666667 52.45)" },
+		    { "Treptow-KÃ¶penick", "POINT ( 13.566666666667 52.45)" },
+		    { "marzahn", "POINT (13.584166666667 52.539722222222 )" },
+		    { "Marzahn-Hellersdorf", "POINT (13.584166666667 52.539722222222 )" },
+		    { "hellersdorf", "POINT (13.584166666667 52.539722222222 )" },
+		    { "Lichtenberg", "POINT ( 13.55 2.533333333333)" },
+		    { "lichtenberg", "POINT ( 13.55 2.533333333333)" },
+		    { "Reinickendorf", "POINT ( 13.35 52.566666666667)" },
+ 		    { "reinickendorf", "POINT ( 13.35 52.566666666667)" },
+       };
+
+        internal static readonly Dictionary<string, string> PLZ = new Dictionary<string, string>()
+        {
+            { "POINT (13.366666666667 52.516666666667)", "10115" },
+		    { "POINT (13.402222222222 52.5)", "10245" },
+		    { "POINT (13.402222222222 52.568888888889)", "13129" },
+		    { "POINT ( 13.285 52.498888888889)", "10625" },
+		    { "POINT (13.166666666667 52.533333333333)", "13587" },
+		    { "POINT (13.25 52.433333333333)", "12169" },
+		    { "POINT ( 13.383333333333 52.466666666667)", "12101" },
+		    { "POINT ( 13.45 52.483333333333)", "12051" },
+		    { "POINT ( 13.566666666667 52.45)", "12435" },
+		    { "POINT (13.584166666667 52.539722222222 )", "12685" },
+		    { "POINT ( 13.55 2.533333333333)", "10365" },
+		    { "POINT ( 13.35 52.566666666667)", "13507" },
+       };
+
+
 
         static void Main(string[] args)
         {
@@ -126,7 +143,7 @@ namespace IPoolImporter
         public decimal GetScore(decimal min, decimal max)
         {
             var nulledScore = RawScore - min;
-            var multiplier = 10/(max - min);
+            var multiplier = 50/(max - min);
             return nulledScore*multiplier;
         }
     }

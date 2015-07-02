@@ -42,10 +42,10 @@ namespace IPoolImporter
                 dbContext.Places.Add(new Places
                 {
                     Location = DbGeography.FromText(district.Key),
-                    Keyword = "news",
+                    Keyword = "popular",
                     Score = (double) news.GetScore(min, max),
                     Source = "ipool_" + news.ID,
-                    Zip = "0"
+                    Zip = Program.PLZ.ContainsKey(district.Key) ? Program.PLZ[district.Key] : "10409"
                 });
             }
         }
