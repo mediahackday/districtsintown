@@ -12,5 +12,8 @@ namespace DistrictsInTown.Api.Models
 
         [JsonProperty("count")]
         public double Score { get; set; }
+
+        [JsonIgnore]
+        public string ZipCode { get; set; }
     }
 }
