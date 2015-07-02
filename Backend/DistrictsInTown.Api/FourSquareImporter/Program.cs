@@ -15,7 +15,8 @@ namespace FourSquareImporter
     {
         static void Main(string[] args)
         {
-            ImportVenus("coffee", "Café");
+            ImportVenus("coffee", new[] { "Café", "Coffee Shops" }, "coffee");
+            //ImportVenus("park", new[] { "Park", }, "park");
         }
 
         private static void WriteVenues(IList<ForesquareVenue> venues)
@@ -29,7 +30,7 @@ namespace FourSquareImporter
             Console.WriteLine("{0}  {1},{2} {3} {4}", venue.Name, venue.Longitude, venue.Latitude, venue.ZipCode, venue.Score);
         }
 
-        private static void ImportVenus(string section, string keyword)
+        private static void ImportVenus(string section, string[] categories, string keyword)
         {
             using (var dbContext = new DistrictsInTownModelContainer())
             {
@@ -39,7 +40,7 @@ namespace FourSquareImporter
                 ForesquareVenueResult result;
                 do
                 {
-                    result = ExploreVenues(offset, chunkSize, "Berlin, DE", section, keyword).Result;
+                    result = ExploreVenues(offset, chunkSize, "Berlin, DE", section, categories, keyword).Result;
                     offset += chunkSize;
 
                     WriteVenues(result.Venues);
@@ -97,18 +98,21 @@ namespace FourSquareImporter
             public IList<ForesquareVenue> Venues;
         }
 
-        private static bool IsInCategory(dynamic categories, string categoryName)
+        private static bool IsInCategory(dynamic categories, string[] categoryNames)
         {
+            var names = new HashSet<string>(categoryNames);
+
             foreach (dynamic category in categories)
             {
-                if (category.shortName == categoryName)
+                if (names.Contains((string)category.shortName))
                     return true;
             }
 
+            Console.WriteLine("Skipped categories {0}", String.Join(" ", ((IEnumerable<dynamic>)categories).Select(n => n.shortName)));
             return false;
         }
 
-        private static async Task<ForesquareVenueResult> ExploreVenues(int offset, int limit, string near, string section, string category)
+        private static async Task<ForesquareVenueResult> ExploreVenues(int offset, int limit, string near, string section, string[] categories, string keyword)
         {
             var httpClient = new HttpClient { BaseAddress = new Uri("https://api.foursquare.com/v2/") };
 
@@ -131,8 +135,8 @@ namespace FourSquareImporter
 
                     try
                     {
-                        /*if (!IsInCategory(venue.categories, category))
-                            continue;*/
+                        if (!IsInCategory(venue.categories, categories))
+                            continue;
 
                         if (venue.rating < 7.0)
                             continue;
@@ -143,7 +147,7 @@ namespace FourSquareImporter
                             Longitude = venue.location.lng,
                             Latitude = venue.location.lat,
                             ZipCode = venue.location.postalCode,
-                            Keyword = "coffee",
+                            Keyword = keyword,
                             Score = venue.rating,
                             Source = "foursquare_" + venue.id
                         };
