@@ -1,18 +1,26 @@
 <div id="map" class="posRel">
-	<div class="posAbs layer-base posLftTop bgDrkGry boxWidFull padSml txtWht">
+	<div class="posAbs layer-base posLftTop bgDrkGry box-xs-12 padSml txtWht">
 		<a href="#" class="">Districts</a>
 	</div>
-	<div class="posAbs layer-base posTopOneTenths boxWidFull">
-		<div class="txtLrg boxWidAtm txtWht">
-			<div class="bgLgtTrns boxCtr boxWidFourTenths padLftXXSml padTopXXTiny padBtmXXSml">
-				<h1 class="txtLrg">Find a good district</h1>
-				<select class="dspInlBlk txtXSml txtRed">
-					<option class="padXXTiny">Berlin</option>
-					<option class="padXXTiny">Amsterdam</option>
-					<option class="padXXTiny">Hamburg</option>
-					<option class="padXXTiny">London</option>
-				</select>
-				<input type="text" name="keyword" class="dspInlBlk boxWidSixTenths padXXTiny txtXSml marLftTiny txtRed" placeholder="#startup">
+	<div class="posAbs layer-base posTopOneTenths box-xs-12">
+		<div class="boxCtr">
+			<div class="bgLgtTrns box-xs-12 box-sm-8 box-md-6 box-sm-offset-2 box-md-offset-3 padLftXXSml padTopXXTiny padBtmXXSml">
+				<div class="row txtLrg">
+					<div class="box-xs-12">
+						<h1 class="txtWht txtLrg">Find a good district</h1>
+					</div>
+					<div class="box-xs-12 box-sm-4 box-md-3">
+						<select class="txtXSml txtDrkGry box-xs-12">
+							<option class="padXXTiny">Berlin</option>
+							<option class="padXXTiny">Amsterdam</option>
+							<option class="padXXTiny">Hamburg</option>
+							<option class="padXXTiny">London</option>
+						</select>
+					</div>
+					<div class="box-xs-12 txtDrkGry box-sm-8 box-md-9">
+						 <input ng-model="keywords" ng-keypress="updateHeatMap($event)" type="text" name="keyword" class="marLftXXSml box-xs-11 padXXTiny txtXSml" placeholder="#startup">
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

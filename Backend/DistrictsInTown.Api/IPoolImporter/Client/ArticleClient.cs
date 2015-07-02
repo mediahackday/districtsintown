@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using OAuth;
@@ -11,64 +12,127 @@ namespace IPoolImporter.Client
 {
     class ArticleClient
     {
-        private readonly string _apiKey;
-        private readonly string _apiSecret;
-
-        public ArticleClient(string apiKey, string apiSecret)
-        {
-            _apiKey = apiKey;
-            _apiSecret = apiSecret;
-        }
+        private static readonly string[] keywords = {"Mord", "Überfall", "Unfall"};
 
         public void GetNumArticlesForDistrict(string district)
         {
+        
+            Dictionary<string, int> numResults = new Dictionary<string, int>();
+            
+            var response = GetResponseForDistrict(district, "");
+            
+            Console.Write(district + ": " + response.Data.pagination.total + ", ");
+            foreach (var key in keywords)
+            {
+                var result = GetResponseForDistrict(district, key);
+                Console.Write(key + ": " + result.Data.pagination.total + ", ");
+            }
+            Console.WriteLine();
+        }
+
+        public List<string> GetKeywordsForDistrict(string district)
+        {
+            var response = GetResponseForDistrict(district, "", 600);
+            List<string> result =
+                response.Data.documents.Where(d => d.entities != null && d.entities.keywords != null).SelectMany(d => d.entities.keywords.Select(k => k.lemma)).Distinct().ToList();
+            return result;
+        }
+
+        public void GetHistogram(string district, Dictionary<string, int> hist)
+        {
+            var response = GetResponseForDistrict(district, "", 600);
+            List<string> result =
+                response.Data.documents.Where(d => d.entities != null && d.entities.keywords != null).SelectMany(d => d.entities.keywords.Select(k => k.lemma)).Distinct().ToList();
+            foreach (string key in result)
+            {
+                if (hist.ContainsKey(key))
+                {
+                    hist[key] += 1;
+
+                }
+                else
+                {
+                    hist[key] = 1;
+                }
+            }
+        }
+
+
+        private static IRestResponse<Articles> GetResponseForDistrict(string district, string query, int limit = 1)
+        {
             RestClient client = new RestClient(Program.BASEURL);
             var request = new RestRequest("search");
-            
-            request.AddParameter("q", "Mord");
-            request.AddParameter("category", district);
-            AddAuth(request);
-            var response = client.Execute(request);
-            
-        }
 
-        private RestRequest AddAuth(RestRequest request)
-        {
-            OAuthBase oAuth = new OAuthBase();
-
-            string uri = Program.BASEURL + request.Resource;
-            if (request.Parameters.Any())
+            request.AddParameter("category", "\"" + district + "\"");
+            request.AddParameter("limit", limit);
+            if (!String.IsNullOrEmpty(query))
             {
-                string parameters = String.Join("&", request.Parameters.Select(p => p.Name + "=" + p.Value).ToArray());
-                uri = uri + "?" + parameters;
-                request.Resource = request.Resource + "?" + parameters;
-                request.Parameters.Clear();
+                request.AddParameter("q", query);
             }
-            string nonce = "2nw9PgKWgzXgUsLlubDBa4tpVA6v00XE";
-            nonce = oAuth.GenerateNonce();
-            string timeStamp = "1435755041";
-            timeStamp = oAuth.GenerateTimeStamp();
-            string normalizedUrl;
-            string normalizedRequestParameters;
-            string sig = oAuth.GenerateSignature(new Uri(uri), _apiKey, _apiSecret, null, null, "GET", timeStamp, nonce, out normalizedUrl, out normalizedRequestParameters);
-            sig = HttpUtility.UrlEncode(sig);
-            //sig = "BOhB16IYbBN2jy%2FxviDxzaQJeqQ%3D";
-
-            
-           
-            request.Method = Method.GET;
-            string authString = String.Format(@"OAuth oauth_consumer_key=""{0}"", oauth_nonce=""{1}"", oauth_signature=""{2}"", oauth_signature_method=""HMAC-SHA1"", oauth_timestamp=""{3}"", oauth_version=""1.0""", _apiKey, nonce, sig, timeStamp);
-            //authString = @"OAuth oauth_consumer_key=""mediahackday"", oauth_nonce=""2nw9PgKWgzXgUsLlubDBa4tpVA6v00XE"", oauth_signature=""018gBoweiBKvrCmbXqO62Oqp8b8%3D"", oauth_signature_method=""HMAC-SHA1"", oauth_timestamp=""1435755041"", oauth_version=""1.0""";
-            // request.AddParameter("api_key", consumerKey);
-            //request.AddParameter("oauth_consumer_key", _apiKey);
-            //request.AddParameter("oauth_nonce", nonce);
-            //request.AddParameter("oauth_timestamp", timeStamp);
-            //request.AddParameter("oauth_signature_method", "HMAC-SHA1");
-            //request.AddParameter("oauth_version", "1.0");
-            //request.AddParameter("oauth_signature", sig);
-            request.AddHeader("Authorization", authString);
-
-            return request;
+            OAuth.AddAuth(request);
+            var response = client.Execute<Articles>(request);
+            return response;
         }
+
+        private class Articles
+        {
+            public Pagination pagination { get; set; }
+            public List<Document> documents { get; set; } 
+        }
+
+        private class Pagination
+        {
+            public int total { get; set; }
+            public int offset { get; set; }
+            public int limit { get; set; }
+        }
+
+        private class Document
+        {
+            public Entities entities { get; set; }
+            public override string ToString()
+            {
+                StringBuilder sb = new StringBuilder("Document ");
+                if (entities == null)
+                {
+                    sb.Append("no entities ");
+                }
+                else
+                {
+                    if (entities.keywords == null)
+                    {
+                        sb.Append("no keywords ");
+                    }
+                    else
+                    {
+                        sb.Append(" keywords: " + entities.keywords.Count);
+                    }
+                    if (entities.location == null)
+                    {
+                        sb.Append(" no location ");
+                    }
+                    else
+                    {
+                        sb.Append("location" + entities.location);
+                    }
+                }
+                return sb.ToString();
+            }
+            
+        }
+
+        private class Entities
+        {
+            public List<KeyWord> keywords { get; set; }
+            public string location { get; set; }
+            
+        }
+
+        private class KeyWord
+        {
+            public string lemma { get; set; }
+            public decimal weight { get; set; }
+        }
+
     }
 }

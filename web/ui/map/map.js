@@ -2,7 +2,7 @@
 
 var app = angular.module('DistrictsInTown');
 
-app.controller('mapCtrl', function(DistrictServ) {
+app.controller('mapCtrl', function($scope, DistrictServ) {
 	var baseLayer = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
 		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
 		maxZoom: 18,
@@ -10,10 +10,14 @@ app.controller('mapCtrl', function(DistrictServ) {
 		accessToken: 'pk.eyJ1Ijoid2VidG9iZXNvY2lhbCIsImEiOiJaU3NfOVdRIn0.k0Zr0K8bPDstktQYhXY-ZA'
 	});
 
-  DistrictServ.getFakeLocationData().then(function (d) {
-    if(d.data) {
-        heatmapLayer.setData(d.data);
-    }});
+  $scope.updateHeatMap = function(event) {
+    if (event.charCode === 32 || event.charCode === 0) {
+      DistrictServ.getFakeLocationData($scope.keywords).then(function (d) {
+        if(d.data) {
+            heatmapLayer.setData(d.data);
+        }});
+    }
+  };
 
 	var cfg = {
 		// radius should be small ONLY if scaleRadius is true (or small radius is intended)
@@ -52,8 +56,8 @@ app.controller('mapCtrl', function(DistrictServ) {
 	var heatmapLayer = new HeatmapOverlay(cfg);
 
 	var map = new L.Map('map', {
-		center: new L.LatLng(25.6586, -80.3568),
-		zoom: 4,
+		center: new L.LatLng(52.5247, 13.38885),
+		zoom: 10,
 		layers: [baseLayer, heatmapLayer]
 	});
 
