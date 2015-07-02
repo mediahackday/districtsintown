@@ -934,14 +934,14 @@
         getColorFun = 'uniform sampler2D gradientTexture;\nvec3 getColor(float intensity){\n    return texture2D(gradientTexture, vec2(intensity, 0.0)).rgb;\n}';
       } else {
         textureGradient = null;
-        getColorFun = 'vec3 getColor(float intensity){\n    vec3 blue = vec3(0.0, 0.0, 1.0);\n    vec3 cyan = vec3(0.0, 1.0, 1.0);\n    vec3 green = vec3(0.0, 1.0, 0.0);\n    vec3 yellow = vec3(1.0, 1.0, 0.0);\n    vec3 red = vec3(1.0, 0.0, 0.0);\n\n    vec3 color = (\n        fade(-0.25, 0.25, intensity)*blue +\n        fade(0.0, 0.5, intensity)*cyan +\n        fade(0.25, 0.75, intensity)*green +\n        fade(0.5, 1.0, intensity)*yellow +\n        smoothstep(0.75, 1.0, intensity)*red\n    );\n    return color;\n}';
+        getColorFun = 'vec3 getColor(float intensity){\n    vec3 blue = vec3(0.0, 0.2, 0.0);\n    vec3 cyan = vec3(0.0, 0.4, 0.0);\n    vec3 red = vec3(0.23529411764705882,0.6980392156862745,0.1411764705882353);\n    vec3 yellow = vec3(0.9450980392156862,0.9647058823529412,0.3176470588235294);\n    vec3 green = vec3(0.9450980392156862,0.6627450980392157,0.054901960784313725);\n\n    vec3 color = (\n        fade(-0.25, 0.25, intensity)*blue +\n        fade(0.0, 0.5, intensity)*cyan +\n        fade(0.25, 0.75, intensity)*green +\n        fade(0.5, 1.0, intensity)*yellow +\n        smoothstep(0.75, 1.0, intensity)*red\n    );\n    return color;\n}';
       }
       if (intensityToAlpha == null) {
         intensityToAlpha = true;
       }
       if (intensityToAlpha) {
         _ref1 = alphaRange != null ? alphaRange : [0, 1], alphaStart = _ref1[0], alphaEnd = _ref1[1];
-        output = "vec4 alphaFun(vec3 color, float intensity){\n    float alpha = smoothstep(" + (alphaStart.toFixed(8)) + ", " + (alphaEnd.toFixed(8)) + ", intensity);\n    return vec4(color*alpha, alpha);\n}";
+        output = "vec4 alphaFun(vec3 color, float intensity){\n    float alpha = smoothstep(" + ("0.0") + ", " + ("1.5") + ", intensity);\n    return vec4(color*alpha, alpha);\n}";
       } else {
         output = 'vec4 alphaFun(vec3 color, float intensity){\n    return vec4(color, 1.0);\n}';
       }

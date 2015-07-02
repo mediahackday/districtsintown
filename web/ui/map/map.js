@@ -18,6 +18,9 @@ app.controller('mapCtrl', function($scope, DistrictServ) {
 							var lat = point.lat;
 							var lng = point.lng;
 							var count = Math.ceil(point.count);
+							if (count < 9) {
+								count = 9;
+							}
     					heatmap.addDataPoint(lat,lng,count*6);
 						}
 						map.addLayer(heatmap);

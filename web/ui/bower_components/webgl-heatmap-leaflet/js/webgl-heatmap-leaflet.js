@@ -9,8 +9,9 @@ L.TileLayer.WebGLHeatMap = L.Class.extend({
     options: {
         size: 30000, // in meters
         opacity: 1,
-	gradientTexture: false,
-	alphaRange: 1
+	      gradientTexture: false,
+	      alphaRange: [1, 0],
+        intensityToAlpha:true
     },
 
     initialize: function (options) {
