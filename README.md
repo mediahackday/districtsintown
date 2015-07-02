@@ -15,5 +15,7 @@ https://github.com/mediahackday/districtsintown
 * Foursquare
 * OpenStreetMaps
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/mediahackday/districtsintown/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+## License
+See the [LICENSE](LICENSE.md) file for license rights and limitations (MIT).
 
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/mediahackday/districtsintown/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
