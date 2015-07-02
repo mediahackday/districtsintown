@@ -14,3 +14,6 @@ https://github.com/mediahackday/districtsintown
 * Ipool
 * Foursquare
 * OpenStreetMaps
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/mediahackday/districtsintown/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
